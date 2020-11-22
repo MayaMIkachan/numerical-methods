@@ -95,7 +95,9 @@ func main() {
 	if err != nil {
 		errorf("%v\n", err)
 	}
+	defer file.Close()
 	if _, err := file.Write(marshaled); err != nil {
+		file.Close()
 		errorf("%v\n", err)
 	}
 }
